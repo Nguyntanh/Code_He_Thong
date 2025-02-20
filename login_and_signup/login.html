@@ -8,27 +8,55 @@
     <style>
         a {
             text-decoration: none;
-            color: #fff;
         }
 
         .btn-custom-fb {
             background-color: rgb(71, 84, 226);
             color: #fff;
             border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px; /* Rounded corners for buttons */
         }
+
         .btn-custom-fb:hover {
             background-color: rgb(50, 65, 200);
-            color: #f0eff3;
         }
 
         .btn-custom-gg {
             background-color: rgb(232, 65, 56);
             color: #fff;
             border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px; /* Rounded corners for buttons */
         }
+
         .btn-custom-gg:hover {
             background-color: rgb(224, 35, 18);
-            color: #f8f7fb;
+        }
+
+        .btn-custom-fb a, .btn-custom-gg a {
+            color: #fff;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            border-radius: 15px; /* Rounded corners for card */
+        }
+
+        .form-control {
+            border-radius: 8px; /* Rounded corners for form inputs */
+        }
+
+        .btn-primary {
+            border-radius: 8px; /* Rounded corners for main login button */
         }
     </style>
 </head>
@@ -38,8 +66,10 @@
             <h4 class="text-center mb-3">Login With</h4>
             <form action="#">
                 <div style="display: flex; flex-dicoration:row; gap: 10px;">
-                    <button type="button" class="btn btn-custom-gg w-100 mb-3"><a href="gg_login.html">Google</a></button>
-                    <button type="button" class="btn btn-custom-fb w-100 mb-3"><a href="fb_login.html">Facebook</a></button>
+                    <div class="btn btn-custom-gg w-100 mb-3">  <a href="gg_login.html">Google</a>
+                    </div>
+                    <div class="btn btn-custom-fb w-100 mb-3">  <a href="fb_login.html">Facebook</a>
+                    </div>
                 </div>
                 <p style="text-align: center;">Or log in with AC2D</p>
                 <div class="mb-3">
@@ -53,7 +83,7 @@
                         <input class="form-check-input" type="checkbox" id="rememberMe">
                         <label class="form-check-label" for="rememberMe">Remember me</label>
                     </div>
-                    <a href="#" class="text-decoration-none">Forgot password?</a>
+                    <a href="forgot_login.html" class="text-decoration-none">Forgot password?</a>
                 </div>
                 <button type="submit" class="btn btn-primary w-100 mt-3">Login</button>
             </form>

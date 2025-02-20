@@ -1,97 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Facebook Login</title>
     <link rel="stylesheet" href="../bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        a {
-            text-decoration: none;
-            color: #fff;
-        }
-
         body {
-            background-color: #f8f9fa; /* Light gray background */
+            background-color: #f0f2f5;
+            font-family: Arial, sans-serif;
         }
 
         .login-container {
-            width: 400px;
+            width: 350px;
+            margin: 100px auto;
             padding: 20px;
-            border-radius: 10px;
             background-color: #fff;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1), 
-                        0px 10px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative; /* Để chứa nút quay lại */
         }
 
-        .fb-btn {
-            background-color: #1877f2; /* Facebook Blue */
-            color: #fff;
-            font-weight: bold;
-            border: none;
+        .facebook-logo {
+            width: 200px;
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .btn-primary {
+            background-color: #1877f2;
+            border-color: #1877f2;
+            width: 100%;
             padding: 10px;
             border-radius: 5px;
-            width: 100%;
         }
 
-        .fb-btn:hover {
-            background-color: #145dbf; /* Darker Facebook Blue */
+        .btn-primary:hover {
+            background-color: #1669c1;
+            border-color: #1669c1;
+        }
+
+        .forgot-password {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .signup-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .signup-link a {
+            color: #1877f2;
+            text-decoration: none;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #1877f2;
+            font-size: 20px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .back-button:hover {
+            text-decoration: underline;
+        }
+
+        .back-button i {
+            margin-right: 5px;
         }
     </style>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 </head>
+
 <body class="d-flex justify-content-center align-items-center vh-100">
 
-    <div class="login-container text-center">
-        <h4 class="fw-bold mb-3">Login with Facebook</h4>
-
-        <button onclick="fbLogin()" style="background-color: #1877f2; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">
-            Continue with Facebook
-        </button>
-
-        <hr>
-
+    <div class="login-container">
+        <a href="login.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Quay lại
+        </a><br>
+        <h2 class="text-center">Đăng nhập Facebook</h2>
         <form>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email or Phone</label>
-                <input type="text" class="form-control" id="email" placeholder="Enter your email or phone" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Login</button>
+            <input type="text" class="form-control" id="email" placeholder="Email hoặc số điện thoại" required>
+            <input type="password" class="form-control" id="password" placeholder="Mật khẩu" required>
+            <button type="submit" class="btn btn-primary">Đăng nhập</button>
         </form>
 
-        <p class="mt-3"><a href="#" class="text-decoration-none text-primary">Forgot password?</a></p>
-        <p>Don't have an account? <a href="signup.html" class="text-decoration-none text-primary">Sign up</a></p>
+        <div class="forgot-password">
+            <a href="forgot_login.html" class="text-decoration-none text-primary">Quên mật khẩu?</a>
+        </div>
+
+        <div class="signup-link">
+            <span>Bạn không có tài khoản?</span> <a href="signup.html">Đăng ký</a>
+        </div>
     </div>
 
     <script src="../bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Initialize Facebook SDK
-        window.fbAsyncInit = function() {
+        window.fbAsyncInit = function () {
             FB.init({
-                appId: 2007835696385651, // Replace with your Facebook App ID
+                appId: 2007835696385651,
                 cookie: true,
                 xfbml: true,
                 version: 'v17.0'
             });
         };
 
-        // Facebook Login Function
         function fbLogin() {
-            FB.login(function(response) {
+            FB.login(function (response) {
                 if (response.authResponse) {
-                    console.log('User logged in:', response);
-                    FB.api('/me', {fields: 'name, email'}, function(userInfo) {
-                        alert('Welcome, ' + userInfo.name);
+                    console.log('Chào mừng! Đang lấy thông tin của bạn.... ');
+                    FB.api('/me', function (response) {
+                        console.log('Rất vui được gặp bạn, ' + response.name + '.');
                     });
                 } else {
-                    alert('User cancelled login');
+                    console.log('Người dùng đã hủy đăng nhập hoặc chưa ủy quyền hoàn toàn.');
                 }
-            }, {scope: 'email, public_profile'});
+            }, { scope: 'public_profile,email' });
         }
     </script>
 </body>
+
 </html>
