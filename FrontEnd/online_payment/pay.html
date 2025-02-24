@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <link href="../bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Checkout</h2>
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Địa chỉ nhận hàng -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Địa chỉ nhận hàng</h5>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <span class="badge bg-success">Nhà riêng</span>
+                                <strong>Nguyễn Tuấn Anh - 0989236054</strong>
+                                <p>69, P. Tố Hữu, Phường Vạn Phúc, Quận Hà Đông, Hà Nội</p>
+                            </div>
+                            <a href="#" class="btn btn-link">Thay đổi</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hình thức thanh toán -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Hình thức thanh toán</h5>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="paymentMethod" id="cod" checked>
+                            <label class="form-check-label" for="cod">
+                                💵 Thanh toán khi nhận hàng (COD)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mã giảm giá -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Mã giảm giá</h5>
+                        <input type="text" class="form-control" placeholder="Nhập mã giảm giá">
+                    </div>
+                </div>
+
+                <!-- Thông tin kiện hàng -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Thông tin kiện hàng</h5>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <span class="badge bg-success">Thứ 4, 26/02</span>
+                                <span>Giao trong 48 giờ</span>
+                            </div>
+                            <span>0 ₫</span>
+                        </div>
+                        <hr>
+                        <div class="d-flex">
+                            <img src="https://via.placeholder.com/80" alt="product" class="me-3">
+                            <div>
+                                <strong>CeraVe</strong>
+                                <p>Sữa Rửa Mặt CeraVe Sạch Sâu Cho Da Thường Đến Dầu 473ml</p>
+                                <span>433.000 ₫</span> → <span class="text-danger">336.000 ₫</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thông tin đơn hàng -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Đơn hàng</h5>
+                        <ul class="list-group mb-3">
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Tạm tính (1)</span>
+                                <strong>336.000 ₫</strong>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Giảm giá</span>
+                                <span>- 0 ₫</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Phí vận chuyển</span>
+                                <span>0 ₫</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <strong>Thành tiền (Đã VAT)</strong>
+                                <strong class="text-danger">336.000 ₫</strong>
+                            </li>
+                        </ul>
+                        <button class="btn btn-success w-100">Đặt hàng</button>
+                        <small class="text-muted d-block mt-2">Nhấn "Đặt hàng" đồng nghĩa với việc bạn đồng ý với chính sách và điều khoản của chúng tôi.</small>
+                        <div class="alert alert-warning mt-3" role="alert">
+                            ⚠️ Lưu ý: Tuyệt đối không chuyển khoản cho shipper trước khi nhận hàng.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
